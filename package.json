@@ -1,7 +1,6 @@
 {
-  "name": "@local/dsh-subscription-sim",
+  "name": "dsh-subscription-sim",
   "version": "1.0.0",
-  "private": true,
   "type": "module",
   "description": "Simulates a Claude/ChatGPT-style subscription for DeepSeek: per-plan 5-hour and 7-day token quotas, real quota errors when exhausted, and self-issued reset cards.",
   "license": "MIT",
@@ -54,5 +53,9 @@
         "@deepseek-ai/dsh-client-ui-settings"
       ]
     }
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }

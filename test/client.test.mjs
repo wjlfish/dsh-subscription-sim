@@ -356,7 +356,7 @@ function loadClient(options = {}) {
   vm.runInNewContext(CLIENT_SOURCE, sandbox, { filename: 'client.js' })
 
   assert.ok(captured.definition, 'client.js must call window.__ModuleLoader__.load(...)')
-  assert.equal(captured.definition.id ?? captured.definition.moduleId, '@local/dsh-subscription-sim')
+  assert.equal(captured.definition.id ?? captured.definition.moduleId, 'dsh-subscription-sim')
 
   const requireSpy = (id) => {
     captured.requireSpecs.push(id)

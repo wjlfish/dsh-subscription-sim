@@ -77,9 +77,11 @@ function xmlWellFormed(text, label) {
 
 test('package.json metadata', () => {
   const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'))
-  assert.equal(pkg.name, '@local/dsh-subscription-sim')
+  assert.equal(pkg.name, 'dsh-subscription-sim')
   assert.equal(pkg.type, 'module', 'host + client are plain ESM; package must be type=module')
-  assert.equal(pkg.private, true)
+  assert.equal(pkg.private, undefined, 'published package must not set private')
+  assert.equal(pkg.publishConfig?.access, 'public', 'publishConfig.access must be public')
+  assert.equal(pkg.publishConfig?.registry, 'https://registry.npmjs.org/', 'publish targets the official npm registry')
   assert.equal(typeof pkg.version, 'string')
   assert.equal(typeof pkg.description, 'string')
   assert.ok(pkg.description.length > 20)
@@ -148,7 +150,7 @@ test('client.js is a plain web module (react-only) with all four v2 slots', () =
   const specs = importSpecifiers(source)
   assert.deepEqual([...new Set(specs)].sort(), ['react'], 'client.js may only require "react" (CONTRACT section 7)')
   assert.match(source, /window\.__ModuleLoader__\.load\s*\(/, 'client must register through window.__ModuleLoader__.load')
-  assert.match(source, /['"]@local\/dsh-subscription-sim['"]/, 'client module id must be @local/dsh-subscription-sim')
+  assert.match(source, /['"]dsh-subscription-sim['"]/, 'client module id must be dsh-subscription-sim')
   for (const slot of [
     'sidebar.footer.action',
     'conversation.composer.dock',
@@ -192,7 +194,7 @@ test('cordis.patch.yml inserts the plugin row with normalized v2 config', () => 
   const patch = read('cordis.patch.yml')
   assert.match(patch, /^-\s*insert:\s*$/m, 'patch must be a top-level insert list')
   assert.match(patch, /id:\s*subscription-sim/m, 'patch row id must be subscription-sim')
-  assert.match(patch, /name:\s*['"]@local\/dsh-subscription-sim['"]/m, 'patch row name must match package name')
+  assert.match(patch, /name:\s*['"]dsh-subscription-sim['"]/m, 'patch row name must match package name')
   assert.match(patch, /plan:\s*max20x/m, 'default config plan must be max20x (cannot lock the operator out)')
   assert.match(patch, /vendor:\s*claude/m, 'CONTRACT section 10: the default vendor is claude')
   assert.match(patch, /h5:\s*true/m)

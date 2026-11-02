@@ -1,6 +1,6 @@
 # VERIFICATION — dsh-subscription-sim (v2)
 
-Independent verification report. Subject: `@local/dsh-subscription-sim` (Host half `index.js` + `lib/`, Client
+Independent verification report. Subject: `dsh-subscription-sim` (Host half `index.js` + `lib/`, Client
 half `client.js`), v2 redesign (Claude/OpenAI vendor catalogs, v1→v2 migration, settings-page split) built in
 `$HOME/dsh-plugins/dsh-subscription-sim`, installed by the Lead into profile `web` and
 loaded in the live Harness Web host.
@@ -32,7 +32,7 @@ loaded in the live Harness Web host.
 | DSH | 0.2.1-rc.2 (Web GUI `http://127.0.0.1:3080`, operator host) |
 | `DSH_HOME` | `$HOME/.dsh` |
 | Package dir | `$HOME/dsh-plugins/dsh-subscription-sim` |
-| Installed dependency | `"@local/dsh-subscription-sim": "link:$HOME/dsh-plugins/dsh-subscription-sim"` (profile `web`) |
+| Installed dependency | `"dsh-subscription-sim": "link:$HOME/dsh-plugins/dsh-subscription-sim"` (profile `web`) |
 | Installed row | `id: subscription-sim`, bundle patch `cordis.patch.yml` (v2 config: `vendor: claude`, `plan: max20x`, windows/enforce/countAuxiliary on) |
 | State file | `$HOME/.dsh/plugin-data/dsh-subscription-sim/state.json` |
 | Client inject | `dsh.client.inject` = conversation + `@deepseek-ai/dsh-client-ui-settings` (owner of `settings.section`) |

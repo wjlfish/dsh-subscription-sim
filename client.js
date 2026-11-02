@@ -1,5 +1,5 @@
 window.__ModuleLoader__.load({
-  id: '@local/dsh-subscription-sim',
+  id: 'dsh-subscription-sim',
   factory(require) {
     const React = require('react')
     const h = React.createElement
@@ -15,7 +15,7 @@ window.__ModuleLoader__.load({
     /** Poll cadence while the tab is visible. */
     const POLL_MS = 4000
     /** Stable id of the style tag this plugin owns. */
-    const STYLE_ID = '@local/dsh-subscription-sim/client.css'
+    const STYLE_ID = 'dsh-subscription-sim/client.css'
     /** Element id used by aria-labelledby for the panel dialog. */
     const PANEL_TITLE_ID = 'dss-panel-title'
     /** The two simulated rolling windows, in display order. */
@@ -974,7 +974,7 @@ window.__ModuleLoader__.load({
         return () => {}
       }
       const tag = document.createElement('style')
-      tag.dataset.plugin = '@local/dsh-subscription-sim'
+      tag.dataset.plugin = 'dsh-subscription-sim'
       tag.dataset.pluginCss = STYLE_ID
       tag.textContent = CSS
       document.head.appendChild(tag)

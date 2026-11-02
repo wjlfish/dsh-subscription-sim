@@ -216,7 +216,7 @@ Never expose claim/redeem as tools (authority-granting actions stay user-only).
 
 ## 7. Client half (`client.js`)
 
-Single plain-JS module: `window.__ModuleLoader__.load({ id: '@local/dsh-subscription-sim', factory(require) { ... } })`.
+Single plain-JS module: `window.__ModuleLoader__.load({ id: 'dsh-subscription-sim', factory(require) { ... } })`.
 Only `require('react')`. No imports of Harness client packages. `inject: ['slots', 'locale']`.
 Call `ctx.locale.register('subscription-sim', { zh: ZH, en: EN })` inside `ctx.effect` and re-render on
 `ctx.locale.subscribe`. All visible text through `ctx.locale.bind('subscription-sim')`

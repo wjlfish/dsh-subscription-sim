@@ -1,6 +1,6 @@
 # 订阅额度模拟器（dsh-subscription-sim）
 
-![tests](https://github.com/wjlfish/dsh-subscription-sim/actions/workflows/ci.yml/badge.svg)
+![tests](https://github.com/wjlfish/dsh-subscription-sim/actions/workflows/ci.yml/badge.svg) [![npm](https://img.shields.io/npm/v/dsh-subscription-sim)](https://www.npmjs.com/package/dsh-subscription-sim)
 
 给 DeepSeek 假装一个「订阅制」，并且**把 OpenAI ChatGPT 和 Anthropic Claude 两家的档位分开模拟**：
 每家一套独立订阅档位，额度用完之后模型请求会真的报错；你可以给自己派发「重置卡」立刻恢复。
@@ -60,38 +60,38 @@
 ## 安装（分享给他人）
 
 要求：对方的 DSH 是 **Web profile**（本插件只提供 Web 界面），已在 `0.2.1-rc.2` 上完整测试过。
-插件包就是本仓库根目录，Host 端零依赖、纯 JS，不需要构建。
+插件包纯 JS、Host 端零依赖，不需要构建。
 
-**方式 A：直接从 GitHub 安装（推荐）**
+**方式 A：从 npm 安装（推荐）**
 
 让对方的 DSH 会话执行（`plugin_manager` 工具，需 Full access）：
+
+```text
+plugin_manager action=install_bundle target="dsh-subscription-sim"
+```
+
+或命令行（装完要到 设置 → 插件 里选中启用 bundle）：
+
+```sh
+dsh plugin --profile web add dsh-subscription-sim
+```
+
+安装后刷新一次 Web 页面。想固定版本就写 `dsh-subscription-sim@1.0.0`。
+
+**方式 B：直接从 GitHub 安装**
 
 ```text
 plugin_manager action=install_bundle target="github:wjlfish/dsh-subscription-sim"
 ```
 
-或者用命令行（等价于 pnpm 安装，然后需要在插件页把 bundle 选中启用）：
+或 `dsh plugin --profile web add github:wjlfish/dsh-subscription-sim`（同样需要启用 bundle）。
 
-```sh
-dsh plugin --profile web add github:wjlfish/dsh-subscription-sim
-```
-
-安装后刷新一次 Web 页面；设置页出现「订阅额度」、侧边栏底部出现「订阅」即成功。
-
-**方式 B：克隆后按本地目录安装**
+**方式 C：克隆后按本地目录安装（开发用）**
 
 ```sh
 git clone https://github.com/wjlfish/dsh-subscription-sim.git
-# 然后让 DSH 安装这个绝对路径：
-#   plugin_manager action=install_bundle target=/abs/path/to/dsh-subscription-sim
+# plugin_manager action=install_bundle target=/abs/path/to/dsh-subscription-sim
 ```
-
-**方式 C：发布到 npm（可选，适合长期分发）**
-
-`package.json` 当前的包名是 `@local/dsh-subscription-sim` 且 `private: true`（防止误发布）。
-如果要发布到 npm：改成本人 scope（如 `@wjlfish/dsh-subscription-sim`）、删除 `private`、
-按需加 `publishConfig.access`，然后 `npm publish`；使用者用
-`plugin_manager action=install_bundle target="<包名>@<版本>"` 安装。
 
 安装/更新后：
 - **刷新一次 Web 页面**（浏览器半边只在页面重新加载时装载）；
@@ -116,7 +116,7 @@ node --test 'test/*.test.mjs'     # 110 项单元/静态/mock-render 测试，No
 
 ```yaml
 - id: subscription-sim
-  name: '@local/dsh-subscription-sim'
+  name: 'dsh-subscription-sim'
   config:
     vendor: claude            # 默认订阅方：claude | openai（仅首次安装/无状态时生效）
     plan: max20x              # 默认档位（同上）

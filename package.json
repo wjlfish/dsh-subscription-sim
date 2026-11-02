@@ -1,0 +1,58 @@
+{
+  "name": "@local/dsh-subscription-sim",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Simulates a Claude/ChatGPT-style subscription for DeepSeek: per-plan 5-hour and 7-day token quotas, real quota errors when exhausted, and self-issued reset cards.",
+  "license": "MIT",
+  "author": "wjlfish",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "subscription",
+    "quota",
+    "reset-cards",
+    "openai",
+    "claude"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wjlfish/dsh-subscription-sim.git"
+  },
+  "homepage": "https://github.com/wjlfish/dsh-subscription-sim#readme",
+  "bugs": {
+    "url": "https://github.com/wjlfish/dsh-subscription-sim/issues"
+  },
+  "scripts": {
+    "test": "node --test 'test/*.test.mjs'"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "lib/*.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-settings"
+      ]
+    }
+  }
+}

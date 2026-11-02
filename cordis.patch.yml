@@ -1,0 +1,17 @@
+- insert:
+    - id: subscription-sim
+      name: '@local/dsh-subscription-sim'
+      config:
+        vendor: claude
+        plan: max20x
+        windows:
+          h5: true
+          d7: true
+        enforce: true
+        countAuxiliary: true
+        cards:
+          initialHeld: 2
+          maxHeld: 9
+          claimCooldownSeconds: 10
+          claimBatch: 1
+        stateFile: ''

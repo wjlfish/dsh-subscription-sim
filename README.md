@@ -6,6 +6,8 @@
 每家一套独立订阅档位，额度用完之后模型请求会真的报错；你可以给自己派发「重置卡」立刻恢复。
 
 > 所有额度与价格都是本机模拟的娱乐设定，**不改变 DeepSeek 的真实计费，也不会真的扣费**。
+>
+> 适用于 DSH **浏览器版与 Desktop 桌面版**（两者内置同一套 Web GUI）。
 
 ## 两套订阅（额度为模拟值）
 
@@ -59,8 +61,7 @@
 
 ## 安装（分享给他人）
 
-要求：对方的 DSH 是 **Web profile**（本插件只提供 Web 界面），已在 `0.2.1-rc.2` 上完整测试过。
-插件包纯 JS、Host 端零依赖，不需要构建。
+要求：**DSH 浏览器版（web profile）或 Desktop 桌面版均可**——界面由 DSH 内嵌的 Web GUI 提供，已在 `0.2.1-rc.2` 的浏览器版与 Desktop 上实测通过。插件包纯 JS、Host 端零依赖，不需要构建。
 
 **方式 A：从 npm 安装（推荐）**
 
@@ -70,13 +71,14 @@
 plugin_manager action=install_bundle target="dsh-subscription-sim"
 ```
 
-或命令行（装完要到 设置 → 插件 里选中启用 bundle）：
+或命令行（装完要到 设置 → 插件 里选中启用 bundle；profile 按运行方式选：浏览器版通常 `web`，Desktop 为 `desktop`，用 Desktop 自带 CLI 时同样适用）：
 
 ```sh
-dsh plugin --profile web add dsh-subscription-sim
+dsh plugin --profile web add dsh-subscription-sim       # 浏览器版
+dsh plugin --profile desktop add dsh-subscription-sim   # Desktop
 ```
 
-安装后刷新一次 Web 页面。想固定版本就写 `dsh-subscription-sim@1.0.0`。
+安装后刷新一次 Web 页面。想固定版本就写 `dsh-subscription-sim@1.0.1`。
 
 **方式 B：直接从 GitHub 安装**
 
@@ -166,4 +168,4 @@ node --test 'test/*.test.mjs'     # 110 项单元/静态/mock-render 测试，No
   （Claude 的 5 小时会话 + 每周额度、ChatGPT 的按模型消息条数）被统一近似为「tokens 滚动窗口」。
 - Tokens 计数来自当前进程内所有模型调用（含子 Agent、工作流、压缩、会话标题，可按配置排除后台调用），
   共用同一份「账户额度」。
-- 只在 DSH Web profile 的 Web GUI 中提供界面；无浏览器自动化能力，视觉验收以实际页面为准。
+- 界面通过 DSH 内嵌的 Web GUI 提供：**浏览器版与 Desktop 桌面版均可**（两者已在 `0.2.1-rc.2` 实测）；TUI / headless 等无该界面的运行方式不可用。浏览器版与 Desktop 共用同一 `$DSH_HOME`，因此额度状态也是同一份。

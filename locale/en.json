@@ -1,6 +1,6 @@
 {
   "meta": {
     "title": "Subscription Quota Simulator",
-    "description": "Turns DeepSeek into a pretend subscription: OpenAI/Anthropic-style plans with 5-hour and 7-day token quotas, genuine quota errors when they run out, and self-issued reset cards to continue."
+    "description": "Turns DeepSeek into a pretend subscription: OpenAI/Anthropic-style plans with 5-hour and 7-day token quotas, genuine quota errors when they run out, and self-issued reset cards to continue. Works in both the browser Web UI and DSH Desktop."
   }
 }

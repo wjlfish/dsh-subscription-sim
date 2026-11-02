@@ -1,8 +1,8 @@
 {
   "name": "dsh-subscription-sim",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
-  "description": "Simulates a Claude/ChatGPT-style subscription for DeepSeek: per-plan 5-hour and 7-day token quotas, real quota errors when exhausted, and self-issued reset cards.",
+  "description": "Simulates a Claude/ChatGPT-style subscription for DeepSeek inside the DSH Web GUI (browser and Desktop): per-plan 5-hour and 7-day token quotas, real quota errors when exhausted, and self-issued reset cards.",
   "license": "MIT",
   "author": "wjlfish",
   "keywords": [

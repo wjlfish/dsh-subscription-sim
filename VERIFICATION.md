@@ -380,3 +380,18 @@ the live plugin after this report, at which point the new catalog is served live
 **Limits unchanged:** no browser/visual check was possible for the refinement (the new tier is rendered from
 the snapshot by the existing client code, verified statically/mock-rendered; the operator page still needs a
 refresh for the four-slot client bundle). No `client.js` changes were made or needed.
+
+---
+
+## Lead addendum — Desktop compatibility (2026-11-02)
+
+The operator tested the installed plugin in **DSH Desktop** and confirmed it works: the same embedded Web GUI
+renders the sidebar entry, composer strip, panel and Settings page, and `subscription_status` stays live.
+
+- Desktop runs its own profile (`desktop`), but the plugin's state file
+  (`$DSH_HOME/plugin-data/dsh-subscription-sim/state.json`) is shared with the browser profile, so both
+  front-ends see the same simulated quota.
+- Verified from the running Desktop Host: profile dependency `dsh-subscription-sim: 1.0.0` (npm copy),
+  bundle selected, `subscription_status` tool callable, `settings.section` slot occupied by
+  `{ id: "subscription-sim", order: 12, active: true }`.
+- No code change was needed for Desktop; v1.0.1 only updates metadata/descriptions and docs.

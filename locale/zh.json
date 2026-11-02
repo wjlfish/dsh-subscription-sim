@@ -1,6 +1,6 @@
 {
   "meta": {
     "title": "订阅额度模拟器",
-    "description": "把 DeepSeek 变成一场模拟订阅：按 OpenAI / Anthropic 档位预设 5 小时与 7 天 Tokens 额度，额度耗尽真的报错，并可给自己派发重置卡继续使用。"
+    "description": "把 DeepSeek 变成一场模拟订阅：按 OpenAI / Anthropic 档位预设 5 小时与 7 天 Tokens 额度，额度耗尽真的报错，并可给自己派发重置卡继续使用。浏览器版与 Desktop 桌面版均可用。"
   }
 }
